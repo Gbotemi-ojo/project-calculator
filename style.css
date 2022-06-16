@@ -19,9 +19,25 @@
 }
 #calculatorDisplay{
     display: flex;
+    flex-direction: column;
     min-width: 41vw;
     min-height: 20vh;
     border: 2px solid black;
+}
+.first-display{
+    width: 100%;
+    min-height: 50%;
+    text-align: right;
+}
+.second-display{
+    width: 100%;
+    text-align: right;
+    min-height: 50%;
+}
+.dummy-display{
+    width: 100%;
+    text-align: right;
+    min-height: 50%;
 }
 #calculatorNumber button{
     min-width: 10vw;
