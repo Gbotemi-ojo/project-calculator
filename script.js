@@ -1,4 +1,6 @@
-let calculatorDisplay = document.getElementById("calculatorDisplay")
+let calculatorDisplay = document.getElementById("calculatorDisplay");
+let secondDisplayContainer = document.querySelector(".secondDisplayContainer");
+let signs = document.querySelector(".signs");
 let NumberButton = document.querySelectorAll(".numbers")
 let firstDisplay = document.querySelector(".first-display")
 let dummyDisplay = document.querySelector(".dummy-display")
@@ -15,16 +17,53 @@ NumberButton.forEach(button => {
     }
 });
 add.addEventListener("click",added)
-//subtract.addEventListener("click",subtracted)
-multiply.addEventListener("click",multiply)
-//divide.addEventListener("click",divided)
+subtract.addEventListener("click",subtracted)
+multiply.addEventListener("click",multiplied)
+divide.addEventListener("click",divided)
 operationButton.addEventListener("click",operate)
 function added(){
-    calculatorDisplay.appendChild(secondDisplay);
-    firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+    secondDisplayContainer.appendChild(secondDisplay);
+    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
     secondDisplay.classList.toggle("second-display");
     dummyDisplay.classList.remove("dummy-display");
-    secondDisplay.textContent = firstDisplay.textContent
+    secondDisplay.textContent =  firstDisplay.textContent;
+    signs.textContent = "+"
+  if(firstDisplay.textContent === "")return
+    else{
+        clearFirstDisplay()
+    }
+}
+function subtracted(){
+    secondDisplayContainer.appendChild(secondDisplay);
+    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+    secondDisplay.classList.toggle("second-display");
+    dummyDisplay.classList.remove("dummy-display");
+    secondDisplay.textContent =  firstDisplay.textContent;
+    signs.textContent = "-"
+    if(firstDisplay.textContent === "")return
+    else{
+        clearFirstDisplay()
+    }
+}
+function multiplied(){
+    secondDisplayContainer.appendChild(secondDisplay);
+    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+    secondDisplay.classList.toggle("second-display");
+    dummyDisplay.classList.remove("dummy-display");
+    secondDisplay.textContent =  firstDisplay.textContent;
+    signs.textContent = "X"
+    if(firstDisplay.textContent === "")return
+    else{
+        clearFirstDisplay()
+    }
+}
+function divided(){
+    secondDisplayContainer.appendChild(secondDisplay);
+    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+    secondDisplay.classList.toggle("second-display");
+    dummyDisplay.classList.remove("dummy-display");
+    secondDisplay.textContent =  firstDisplay.textContent;
+    signs.textContent = "÷"
     if(firstDisplay.textContent === "")return
     else{
         clearFirstDisplay()
@@ -37,7 +76,19 @@ function clearFirstDisplay(){
     firstDisplay.textContent = ""
 }
  function calculate(){
-     let calculate = +firstDisplay.textContent + +secondDisplay.textContent
-     firstDisplay.textContent = calculate;
+    let autocalculate;
+     if(signs.textContent === "+"){
+     autocalculate = +secondDisplay.textContent + +firstDisplay.textContent
+     }
+     else if(signs.textContent === "-"){
+     autocalculate = +secondDisplay.textContent - +firstDisplay.textContent
+     }
+     else if(signs.textContent === "X"){
+        autocalculate = +secondDisplay.textContent * +firstDisplay.textContent
+     }
+     else if(signs.textContent === "÷"){
+        autocalculate = +secondDisplay.textContent / +firstDisplay.textContent
+     }
+     firstDisplay.textContent = autocalculate;
      secondDisplay.classList.remove("second-display");
  }
