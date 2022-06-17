@@ -1,3 +1,5 @@
+let clearButton = document.getElementById("clear-btn")
+let deleteButton = document.getElementById("del-btn")
 let calculatorDisplay = document.getElementById("calculatorDisplay");
 let secondDisplayContainer = document.querySelector(".secondDisplayContainer");
 let signs = document.querySelector(".signs");
@@ -21,6 +23,16 @@ subtract.addEventListener("click",subtracted)
 multiply.addEventListener("click",multiplied)
 divide.addEventListener("click",divided)
 operationButton.addEventListener("click",operate)
+clearButton.addEventListener("click",allclear)
+deleteButton.addEventListener("click",deleteCurrentDisplay)
+function deleteCurrentDisplay(){
+ firstDisplay.textContent = firstDisplay.textContent.substring(0, firstDisplay.textContent.length -1);
+}
+function allclear(){
+    firstDisplay.textContent = ""
+    secondDisplay.textContent = ""
+    signs.textContent = ""
+}
 function added(){
     if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
         calculate()
@@ -50,7 +62,6 @@ function subtracted(){
     }
     else{
         secondDisplayContainer.appendChild(secondDisplay);
-        //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
         secondDisplay.classList.toggle("second-display");
         dummyDisplay.classList.remove("dummy-display");
         secondDisplay.textContent =  firstDisplay.textContent;
@@ -70,7 +81,6 @@ function multiplied(){
     }
     else{
         secondDisplayContainer.appendChild(secondDisplay);
-    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
     secondDisplay.classList.toggle("second-display");
     dummyDisplay.classList.remove("dummy-display");
     secondDisplay.textContent =  firstDisplay.textContent;
@@ -90,7 +100,6 @@ function divided(){
     }
     else{
         secondDisplayContainer.appendChild(secondDisplay);
-        //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
         secondDisplay.classList.toggle("second-display");
         dummyDisplay.classList.remove("dummy-display");
         secondDisplay.textContent =  firstDisplay.textContent;
@@ -124,7 +133,6 @@ function clearFirstDisplay(){
      firstDisplay.textContent = autocalculate;
      secondDisplay.textContent = ""
      signs.textContent = ""
-    // secondDisplay.classList.remove("second-display");
  }
  function signscalculate(){
      if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
