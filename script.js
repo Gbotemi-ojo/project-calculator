@@ -22,31 +22,54 @@ multiply.addEventListener("click",multiplied)
 divide.addEventListener("click",divided)
 operationButton.addEventListener("click",operate)
 function added(){
-    secondDisplayContainer.appendChild(secondDisplay);
-    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
-    secondDisplay.classList.toggle("second-display");
-    dummyDisplay.classList.remove("dummy-display");
-    secondDisplay.textContent =  firstDisplay.textContent;
-    signs.textContent = "+"
-  if(firstDisplay.textContent === "")return
+    if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
+        calculate()
+        secondDisplay.textContent = firstDisplay.textContent
+        signs.textContent = "+"
+        firstDisplay.textContent = ""
+    }
     else{
-        clearFirstDisplay()
+        secondDisplayContainer.appendChild(secondDisplay);
+        //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+        secondDisplay.classList.toggle("second-display");
+        dummyDisplay.classList.remove("dummy-display");
+        secondDisplay.textContent =  firstDisplay.textContent;
+        signs.textContent = "+"
+      if(firstDisplay.textContent === "")return
+        else{
+            clearFirstDisplay()
+        } 
     }
 }
 function subtracted(){
-    secondDisplayContainer.appendChild(secondDisplay);
-    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
-    secondDisplay.classList.toggle("second-display");
-    dummyDisplay.classList.remove("dummy-display");
-    secondDisplay.textContent =  firstDisplay.textContent;
-    signs.textContent = "-"
-    if(firstDisplay.textContent === "")return
+    if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
+        calculate()
+        secondDisplay.textContent = firstDisplay.textContent
+        signs.textContent = "-"
+        firstDisplay.textContent = ""
+    }
     else{
-        clearFirstDisplay()
+        secondDisplayContainer.appendChild(secondDisplay);
+        //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+        secondDisplay.classList.toggle("second-display");
+        dummyDisplay.classList.remove("dummy-display");
+        secondDisplay.textContent =  firstDisplay.textContent;
+        signs.textContent = "-"
+        if(firstDisplay.textContent === "")return
+        else{
+            clearFirstDisplay()
+        }
     }
 }
 function multiplied(){
-    secondDisplayContainer.appendChild(secondDisplay);
+    if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
+        calculate()
+        secondDisplay.textContent = firstDisplay.textContent
+        signs.textContent = "X"
+        firstDisplay.textContent = ""
+    }
+    else{
+        secondDisplayContainer.appendChild(secondDisplay);
     //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
     secondDisplay.classList.toggle("second-display");
     dummyDisplay.classList.remove("dummy-display");
@@ -55,18 +78,27 @@ function multiplied(){
     if(firstDisplay.textContent === "")return
     else{
         clearFirstDisplay()
+    } 
     }
 }
 function divided(){
-    secondDisplayContainer.appendChild(secondDisplay);
-    //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
-    secondDisplay.classList.toggle("second-display");
-    dummyDisplay.classList.remove("dummy-display");
-    secondDisplay.textContent =  firstDisplay.textContent;
-    signs.textContent = "÷"
-    if(firstDisplay.textContent === "")return
+    if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
+        calculate()
+        secondDisplay.textContent = firstDisplay.textContent
+        signs.textContent = "÷"
+        firstDisplay.textContent = ""
+    }
     else{
-        clearFirstDisplay()
+        secondDisplayContainer.appendChild(secondDisplay);
+        //firstDisplay.parentNode.insertBefore(secondDisplay,firstDisplay);
+        secondDisplay.classList.toggle("second-display");
+        dummyDisplay.classList.remove("dummy-display");
+        secondDisplay.textContent =  firstDisplay.textContent;
+        signs.textContent = "÷"
+        if(firstDisplay.textContent === "")return
+        else{
+            clearFirstDisplay()
+        }
     }
 }
  function operate(){
@@ -90,5 +122,12 @@ function clearFirstDisplay(){
         autocalculate = +secondDisplay.textContent / +firstDisplay.textContent
      }
      firstDisplay.textContent = autocalculate;
-     secondDisplay.classList.remove("second-display");
+     secondDisplay.textContent = ""
+     signs.textContent = ""
+    // secondDisplay.classList.remove("second-display");
+ }
+ function signscalculate(){
+     if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
+         calculate()
+     }
  }
