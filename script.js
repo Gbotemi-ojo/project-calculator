@@ -3,6 +3,7 @@ let deleteButton = document.getElementById("del-btn")
 let calculatorDisplay = document.getElementById("calculatorDisplay");
 let secondDisplayContainer = document.querySelector(".secondDisplayContainer");
 let signs = document.querySelector(".signs");
+let decimalPoint = document.getElementById("decimalPoint")
 let NumberButton = document.querySelectorAll(".numbers")
 let firstDisplay = document.querySelector(".first-display")
 let dummyDisplay = document.querySelector(".dummy-display")
@@ -26,9 +27,19 @@ add.addEventListener("click",added)
 subtract.addEventListener("click",subtracted)
 multiply.addEventListener("click",multiplied)
 divide.addEventListener("click",divided)
+decimalPoint.addEventListener("click", decima)
 operationButton.addEventListener("click",operate)
 clearButton.addEventListener("click",allclear)
 deleteButton.addEventListener("click",deleteCurrentDisplay)
+function decima(){
+    firstDisplay.textContent += "."
+    if(firstDisplay.textContent.includes(".")){
+        decimalPoint.disabled = true
+    }
+    else{
+        decimalPoint.disabled = false
+    }
+}
 function deleteCurrentDisplay(){
  firstDisplay.textContent = firstDisplay.textContent.substring(0, firstDisplay.textContent.length -1);
 }
@@ -156,6 +167,7 @@ function disableButtonRepeat(){
     divide.disabled = true
     subtract.disabled = true
     multiply.disabled = true
+    decimalPoint.disabled = false
 }
  
 
