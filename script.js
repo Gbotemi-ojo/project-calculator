@@ -16,6 +16,10 @@ NumberButton.forEach(button => {
    button.addEventListener("click",eachnumber)
     function eachnumber(){
       firstDisplay.textContent += button.textContent
+      add.disabled = false
+      subtract.disabled = false
+      multiply.disabled = false
+      divide.disabled = false
     }
 });
 add.addEventListener("click",added)
@@ -33,7 +37,9 @@ function allclear(){
     secondDisplay.textContent = ""
     signs.textContent = ""
 }
+add.disabled = true
 function added(){
+disableButtonRepeat()
     if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
         calculate()
         secondDisplay.textContent = firstDisplay.textContent
@@ -53,7 +59,9 @@ function added(){
         } 
     }
 }
+subtract.disabled = true
 function subtracted(){
+   disableButtonRepeat()
     if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
         calculate()
         secondDisplay.textContent = firstDisplay.textContent
@@ -72,7 +80,9 @@ function subtracted(){
         }
     }
 }
+multiply.disabled = true
 function multiplied(){
+ disableButtonRepeat()
     if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
         calculate()
         secondDisplay.textContent = firstDisplay.textContent
@@ -91,7 +101,9 @@ function multiplied(){
     } 
     }
 }
+divide.disabled = true
 function divided(){
+    disableButtonRepeat()
     if(firstDisplay.textContent !=="" && secondDisplay.textContent !== "" && signs.textContent !== ""){
         calculate()
         secondDisplay.textContent = firstDisplay.textContent
@@ -139,3 +151,11 @@ function clearFirstDisplay(){
          calculate()
      }
  }
+function disableButtonRepeat(){
+    add.disabled = true
+    divide.disabled = true
+    subtract.disabled = true
+    multiply.disabled = true
+}
+ 
+
